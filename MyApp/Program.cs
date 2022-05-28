@@ -1,33 +1,38 @@
-﻿int repetir;
-Console.WriteLine("Ingrese el número que desea operar:");
-double numero = Convert.ToDouble(Console.ReadLine());
-Calculadora calc = new Calculadora(numero);
+﻿using Ejercicio2;
 
-do{
-    Console.WriteLine("Ingrese la operación que desea realizar:");
-    Console.WriteLine("[1] sumar, [2] restar, [3] multiplicar, [4] dividir, [5] Limpiar");
-    double operacion = Convert.ToDouble(Console.ReadLine());
+Empleado empleado1 = new Empleado("Gustavo", "Cerati", new DateTime(1980,5,27), 'C', 'H', new DateTime(2007,5,26), 65000, Cargos.Ingeniero);
+Empleado empleado2 = new Empleado("Bruce", "Wayne", new DateTime(1970,1,26), 'S', 'H', new DateTime(2015,9,12), 75000, Cargos.Investigador);
+Empleado empleado3 = new Empleado("Megan", "Fox", new DateTime(1990,12,16), 'D', 'M', new DateTime(1990,5,3), 50000, Cargos.Administrativo);
 
-    switch (operacion)
+Console.WriteLine("\n===> Monto total de los salarios: $" + TotalSalarios());
+
+Console.WriteLine("\n----------------------------");
+
+Console.WriteLine("\n===> Empleado próximo a jubilarse:\n");
+ProximoAjubilarse().MostrarEmpleado();
+
+
+// métodos
+double TotalSalarios()
+{
+    return empleado1.Salario() + empleado2.Salario() + empleado3.Salario();
+}
+
+Empleado ProximoAjubilarse()
+{
+    if ( (empleado1.Jubilacion() <= empleado2.Jubilacion()) && (empleado1.Jubilacion() <= empleado3.Jubilacion()) )
     {
-        case 1:
-            calc.Sumar(numero);
-            break;
-        case 2:
-            calc.Restar(numero);
-            break;
-        case 3:
-            calc.Multiplicar(numero);
-            break;
-        case 4:
-            calc.Dividir(numero);
-            break;
-        case 5:
-            calc.Limpiar();
-            break;
+        return empleado1;
     }
-    
-    Console.WriteLine("El resultado es: " + calc.Resultado);
-    Console.WriteLine("Desea realizar otro cálculo? (1: Si, 0: No)");
-    repetir = Convert.ToInt32(Console.ReadLine());
-} while (repetir==1);
+    else
+    {
+        if ( (empleado2.Jubilacion() <= empleado1.Jubilacion()) && (empleado2.Jubilacion() <= empleado3.Jubilacion()) )
+        {
+            return empleado2;
+        }
+        else
+        {
+            return empleado3;
+        }
+    }
+}
