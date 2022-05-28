@@ -27,7 +27,7 @@ do{
             break;
     }
     
-    Console.WriteLine("El resultado es: " + calc.Resultado);
+    Console.WriteLine("El resultado es: " + calc.resultado);
     Console.WriteLine("Desea realizar otro cálculo? (1: Si, 0: No)");
     repetir = Convert.ToInt32(Console.ReadLine());
 } while (repetir==1);
