@@ -3,15 +3,16 @@ public class Calculadora
     // campo
     private double _resultado;
 
-    // propiedad
-    public double resultado { get => _resultado; } // no agrego 'set', entonces no permito que el usuario pueda setear el valor de _resultado
-
-    // métodos
+    // constructor
     public Calculadora(double valorInicial)
     {
         _resultado = valorInicial;
     }
 
+    // propiedad
+    public double resultado { get => _resultado; } // no agrego 'set', entonces no permito que el usuario pueda setear el valor de _resultado
+
+    // métodos
     public void Sumar(double valor)
     {
         _resultado+=valor;
